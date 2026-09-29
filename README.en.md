@@ -21,6 +21,20 @@ system audio, with a full-screen background.
 
 ---
 
+## Download
+
+Don't want to build it yourself? Grab the packaged executable:
+
+### ➡️ [Download FlowerWall.exe from Releases](https://github.com/Zhiyang-Lin/FlowerWall/releases/latest)
+
+- **Single file, self-contained** — double-click to run, **no .NET installation required**
+- ~138 MB, Windows 10 1903 or later (64-bit)
+- On first launch Windows may show "Windows protected your PC" — click **More info** → **Run anyway**
+  (the binary is unsigned, which is normal for free software)
+- To verify a complete download: the file should be exactly `145,139,136` bytes
+
+---
+
 ## Quick start
 
 ### 1. Install the .NET 8 SDK (once)

@@ -175,26 +175,20 @@ powershell -ExecutionPolicy Bypass -File scripts\build.ps1 publish
    - Windows 10 1903 或更高版本（64 位）
    ```
 
-5. 把 `dist\FlowerWall.exe` **拖进** "Attach binaries" 区域（150MB 可能要传一会儿）
+5. 把 `dist\FlowerWall.exe` **拖进** "Attach binaries" 区域（138 MB 可能要传一会儿）
 6. 点 **Publish release**
 
-**5.3 回到主 README 加下载引导**（可选但推荐）
+**5.3 下载引导已经加好了**
 
-在 `README.md` 的「快速开始」上面加一段，让访客先看到下载入口：
+`README.md` 与 `README.en.md` 在预览图下方都有一段「下载」小节，直接指向
+`releases/latest`（永远指向最新版本，发新 Release 后不用改链接）：
 
 ```markdown
-## 下载
-
-不想自己编译的话，直接去 [Releases](../../releases) 下载 `FlowerWall.exe`，双击运行即可。
+### ➡️ [前往 Releases 下载 FlowerWall.exe](https://github.com/Zhiyang-Lin/FlowerWall/releases/latest)
 ```
 
-改完提交推送：
-
-```powershell
-git add README.md
-git commit -m "README 增加下载引导"
-git push
-```
+**以后发新版本时**，只需重复 5.1 和 5.2 两步（改 tag 为 `v0.2.0` 之类），
+README 不需要再动 —— 这正是不写死具体版本号的原因。
 
 ---
 
