@@ -23,7 +23,7 @@ import urllib.request
 import zipfile
 
 RELEASES_INDEX = "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json"
-USER_AGENT = "desktop-wallpaper-bootstrap"
+USER_AGENT = "flowerwall-bootstrap"
 
 
 def fetch_json(url: str) -> dict:

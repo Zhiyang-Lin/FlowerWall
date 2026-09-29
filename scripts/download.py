@@ -13,7 +13,7 @@ from __future__ import annotations
 import sys
 import urllib.request
 
-USER_AGENT = "desktop-wallpaper-bootstrap"
+USER_AGENT = "flowerwall-bootstrap"
 CHUNK_SIZE = 1 << 16
 
 

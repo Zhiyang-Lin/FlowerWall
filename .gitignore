@@ -29,5 +29,10 @@ crash-*.log
 # 用户导入的背景图会被拷到这里；属于个人素材，不入库。
 assets/
 
+# Python 字节码缓存。构建脚本用 Python 下载 SDK，跑一次 py_compile 或
+# 直接 import 就会生成，属于本机产物。
+__pycache__/
+*.py[cod]
+
 # 根目录下临时用来测试背景导入的图片
 /background_default.png

@@ -33,17 +33,32 @@
 #>
 [CmdletBinding()]
 param(
-    [string] $InstallDir = (Join-Path (Split-Path -Parent $PSScriptRoot) '.tools\dotnet'),
+    [string] $InstallDir,
     [string] $Channel    = '8.0'
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+# Default install location: <repo>\.tools\dotnet
+#
+# NOTE - why this is resolved here and not as a param() default:
+# In Windows PowerShell 5.1, $PSScriptRoot is NOT populated while the parameter
+# block of an *advanced* script ([CmdletBinding()]) is being bound. It arrives as
+# an empty string, so `Split-Path -Parent $PSScriptRoot` in a default fails with
+# "Cannot bind argument to parameter 'Path' because it is an empty string".
+# A plain script without [CmdletBinding()] does populate it, which makes this
+# easy to miss. Verified by experiment; keep the default in the body.
+if (-not $InstallDir) {
+    $InstallDir = Join-Path (Split-Path -Parent $PSScriptRoot) '.tools\dotnet'
+}
+
+# Search the usual Anaconda locations first, then whatever "python" resolves to.
+# Deliberately no hard-coded drive letters: a path that only exists on the
+# author's machine is noise in a public repository, and PATH already covers it.
 function Get-PythonPath {
     foreach ($candidate in @(
             (Join-Path $env:USERPROFILE 'anaconda3\python.exe'),
-            'D:\anaconda3\python.exe',
             'C:\ProgramData\anaconda3\python.exe'
         )) {
         if (Test-Path -LiteralPath $candidate) { return $candidate }
@@ -107,7 +122,7 @@ if ($python -and (Test-Path -LiteralPath $pythonInstaller)) {
     & $python $pythonInstaller --install-dir $InstallDir --channel $Channel
 }
 else {
-    $tempDir = Join-Path ([System.IO.Path]::GetTempPath()) 'desktop-wallpaper-bootstrap'
+    $tempDir = Join-Path ([System.IO.Path]::GetTempPath()) 'flowerwall-bootstrap'
     New-Item -ItemType Directory -Force -Path $tempDir | Out-Null
     $installer = Join-Path $tempDir 'dotnet-install.ps1'
 
