@@ -1,0 +1,115 @@
+// 花墙 FlowerWall — 配置文件
+//
+// 本文件由 `scriptsuild.ps1 diag -DiagArgs config` 从代码默认值生成，字段顺序与含义以代码为准。
+// 直接改这里的值即可，改完在托盘/悬浮按钮右键菜单点「重新加载配置」立即生效，不需要重启。
+// 支持 // 与 /* */ 注释；颜色用 #RRGGBB；枚举用字符串（如 "Solid" / "Image"）。
+//
+// 调参速查：
+//   主题配色 ......... theme.accentColor（声波环/文字/图标）、theme.preset（预置配色）、background.color（纯色底）
+//   背景图 ........... 右键菜单「导入背景图」会自动写入 background.image 与 mode
+//   胶片 ............. record.diameter（大小）、record.rpm（转速）、record.blossomPetals（刻印花瓣数）
+//   声波环 ........... spectrum.bandCount（采样点数）、spectrum.maxLength（振幅）
+//   流动速度 ......... spectrum.flowSpeed（0 表示不流动，可完全停帧省电）
+//   灵敏度 ........... spectrum.gain、spectrum.noiseFloorDb、spectrum.ceilingDb
+//   省电 ............. render.maxFps 调小、spectrum.bandCount 调小、background.mode 设为 "None"
+//   空闲唤醒 ......... idle.thresholdMinutes（分钟）、idle.boostWhenIdle（空闲时是否增强）
+//   界面语言 ......... app.language：Auto / Chinese / English
+
+{
+  "version": 2,
+  "app": {
+    "singleInstance": true,
+    "startVisible": false,
+    "trayIcon": true,
+    "language": "Auto"
+  },
+  "idle": {
+    "enabled": true,
+    "thresholdMinutes": 5,
+    "boostWhenIdle": true,
+    "idleBoostGain": 1.35,
+    "idleBoostGlow": 1.5,
+    "pollIntervalMs": 500
+  },
+  "theme": {
+    "preset": "Matcha",
+    "accentColor": "#E4679A",
+    "highlightColor": "#FFF0F5",
+    "discColor": "#06080B",
+    "grooveColor": "#39434F"
+  },
+  "background": {
+    "mode": "Solid",
+    "color": "#A9C69A",
+    "centerColor": "#B5CFA6",
+    "opacity": 1,
+    "image": "",
+    "fit": "Cover",
+    "gradientStrength": 0
+  },
+  "record": {
+    "diameter": 560,
+    "labelDiameter": 250,
+    "spindleDiameter": 16,
+    "grooveCount": 72,
+    "grooveIrregularity": 0.35,
+    "grooveOpacity": 0.95,
+    "grooveOuterBoost": 1.55,
+    "specularStrength": 0.5,
+    "wearStrength": 0.6,
+    "rpm": 33.3,
+    "activeSpeedFactor": 1.6,
+    "silentSpeedFactor": 0.45,
+    "speedSmoothing": 0.08,
+    "spinStopThreshold": 0.02,
+    "rimHighlight": 0.4,
+    "centerTextScale": 0.5
+  },
+  "spectrum": {
+    "bandCount": 128,
+    "barWidth": 4.5,
+    "gapFromRecord": 12,
+    "maxLength": 110,
+    "minLength": 4,
+    "startAngleDeg": -90,
+    "minFrequency": 30,
+    "maxFrequency": 16000,
+    "gain": 1,
+    "noiseFloorDb": -62,
+    "ceilingDb": -3,
+    "lowGain": 1.2,
+    "midGain": 1,
+    "highGain": 0.8,
+    "attack": 0.5,
+    "release": 0.1,
+    "peakDecayPerSecond": 0.9,
+    "flowSpeed": 0.035,
+    "secondaryPhaseRadians": 1.5708,
+    "secondaryAmplitude": 0.62,
+    "secondaryOpacity": 0.4,
+    "reflectionAmplitude": 0.75,
+    "reflectionLength": 12,
+    "reflectionOpacity": 0.14,
+    "glowStrength": 0.18,
+    "fftSize": 2048
+  },
+  "render": {
+    "maxFps": 24,
+    "frameTickMilliseconds": 5,
+    "fadeDurationMs": 600
+  },
+  "button": {
+    "enabled": true,
+    "diameter": 20,
+    "hoverDiameter": 48,
+    "edgeMargin": 24,
+    "defaultCorner": "BottomRight",
+    "rememberPosition": true,
+    "idleOpacity": 0.6,
+    "position": {
+      "x": -1,
+      "y": -1,
+      "isValid": false
+    }
+  }
+}

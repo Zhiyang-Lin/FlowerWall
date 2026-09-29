@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    逻辑库：音频采集、频谱分析、Win32/WASAPI 互操作、可视化绘制。
+    不含任何窗口与消息循环，因此既可以被桌面程序引用，也可以被诊断工具或单元测试直接调用。
+    WPF 仅用于绘制（DrawingVisual / RenderTargetBitmap），不需要 WinForms。
+  -->
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>FlowerWall.Core</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 诊断工具与首次运行都依赖这份默认配置模板 -->
+    <None Update="..\..\config\settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

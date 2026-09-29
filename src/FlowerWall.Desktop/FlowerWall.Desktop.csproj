@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    桌面程序：进程入口、窗口、悬浮按钮、托盘菜单、帧循环。
+    WinForms 负责窗口与消息循环，WPF 由 FlowerWall.Core 带入用于绘制。
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>FlowerWall</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FlowerWall.Core\FlowerWall.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+      把默认配置放到输出目录的 config\ 下，程序会从这里读取。
+      必须显式声明：config\ 位于各项目目录之外，SDK 的隐式通配不会覆盖到它。
+      PreserveNewest 让「改源配置 → 构建」能同步过去；
+      程序只在用户拖动悬浮按钮后才写回该文件，因此正常情况下源文件更新。
+    -->
+    <None Include="..\..\config\settings.json" Link="config\settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

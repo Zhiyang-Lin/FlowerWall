@@ -1,0 +1,20 @@
+# 换行符策略
+#
+# 为什么要显式声明：Windows 上 git 默认会把文本文件的 LF 转成 CRLF 再检出，
+# 于是同一份代码在不同机器上换行不一致，diff 会出现整文件级别的噪声。
+# 这里统一规定：**仓库与工作区一律用 LF**。
+#
+# 注意：这条规则要和实际写文件的代码保持一致。
+# 例如 config/settings.json 由诊断工具生成，生成器就必须显式写 LF，
+# 否则每次重新生成都会因为换行差异而产生一次无意义的改动。
+* text=auto eol=lf
+
+# 图片是二进制，不能做任何换行或编码转换，否则文件会被破坏。
+*.png binary
+*.jpg binary
+*.ico binary
+*.gif binary
+
+# 唯一必须 CRLF 的类型：cmd.exe 解析非 CRLF 换行时可能出错。
+*.cmd text eol=crlf
+*.bat text eol=crlf

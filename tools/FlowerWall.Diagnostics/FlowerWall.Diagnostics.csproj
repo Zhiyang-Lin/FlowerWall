@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    诊断工具：不启动窗口，直接测量音频链路与渲染开销，并把可视化结果导出成 PNG。
+    用途：
+      - 改完渲染参数后确认帧耗时没有劣化；
+      - 在没有图形界面的环境下验证 FFT / 频段映射是否正确；
+      - 提交前跑一遍，作为「本机性能基线」。
+    用法见 tools/FlowerWall.Diagnostics/README.md。
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>FlowerWall.Diagnostics</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\FlowerWall.Core\FlowerWall.Core.csproj" />
+  </ItemGroup>
+
+</Project>
